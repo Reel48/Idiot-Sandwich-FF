@@ -5,7 +5,6 @@ import type {
   SleeperLeague,
   SleeperMatchup,
   SleeperNflState,
-  SleeperPlayer,
   SleeperRoster,
   SleeperTransaction,
   SleeperUser,
@@ -64,9 +63,8 @@ export const getDrafts = (leagueId: string) =>
 export const getDraftPicks = (draftId: string) =>
   get<SleeperDraftPick[]>(`/draft/${draftId}/picks`, HISTORICAL);
 
-// ~5MB payload; Sleeper asks that this be fetched at most once per day.
-export const getAllPlayers = () =>
-  get<Record<string, SleeperPlayer>>(`/players/nfl`, 86400);
+// Player lookups live in ./players.ts (the 5MB players/nfl payload exceeds
+// Next's fetch-cache item limit, so it needs special handling).
 
 export function avatarUrl(avatar: string | null | undefined, thumb = true) {
   if (!avatar) return null;

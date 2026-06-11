@@ -1,5 +1,7 @@
-import Link from "next/link";
-import { getLeague } from "@/lib/sleeper/api";
+import { getLeague, getNflState } from "@/lib/sleeper/api";
+import { seasonPhase } from "@/lib/data";
+import { Avatar } from "@/components/ui";
+import { LeagueTabs } from "@/components/nav";
 
 const TABS = [
   { slug: "", label: "Dashboard" },
@@ -10,6 +12,22 @@ const TABS = [
   { slug: "awards", label: "Awards" },
 ];
 
+function StatusChip({ phase }: { phase: "pre" | "live" | "done" }) {
+  const styles = {
+    pre: "bg-amber-500/15 text-gold border-gold/30",
+    live: "bg-emerald-500/15 text-accent border-accent/30",
+    done: "bg-surface-2 text-zinc-400 border-edge",
+  } as const;
+  const labels = { pre: "Offseason", live: "Live", done: "Final" } as const;
+  return (
+    <span
+      className={`rounded-full border px-2.5 py-0.5 text-xs font-medium ${styles[phase]}`}
+    >
+      {labels[phase]}
+    </span>
+  );
+}
+
 export default async function LeagueLayout({
   children,
   params,
@@ -18,32 +36,32 @@ export default async function LeagueLayout({
   params: Promise<{ leagueId: string }>;
 }) {
   const { leagueId } = await params;
-  const league = await getLeague(leagueId).catch(() => null);
+  const [league, nfl] = await Promise.all([
+    getLeague(leagueId).catch(() => null),
+    getNflState().catch(() => null),
+  ]);
   const base = `/league/${leagueId}`;
+  const phase = league ? seasonPhase(league, nfl?.week ?? 0) : null;
+
   return (
-    <div className="space-y-6">
-      <div>
-        <h1 className="text-2xl font-bold">{league?.name ?? "League"}</h1>
+    <div className="space-y-5">
+      <div className="flex items-center gap-3">
         {league && (
-          <p className="text-sm text-zinc-400">
-            {league.season} season ·{" "}
-            {league.status === "complete"
-              ? "final"
-              : league.status.replace("_", " ")}
-          </p>
+          <Avatar avatar={league.avatar} size={48} alt={league.name} />
         )}
+        <div className="min-w-0">
+          <h1 className="flex flex-wrap items-center gap-2 text-2xl font-black tracking-tight">
+            <span className="truncate">{league?.name ?? "League"}</span>
+            {phase && <StatusChip phase={phase} />}
+          </h1>
+          {league && (
+            <p className="text-sm text-zinc-400">{league.season} season</p>
+          )}
+        </div>
       </div>
-      <nav className="flex flex-wrap gap-1 border-b border-zinc-800 pb-2">
-        {TABS.map((t) => (
-          <Link
-            key={t.slug}
-            href={t.slug ? `${base}/${t.slug}` : base}
-            className="rounded-md px-3 py-1.5 text-sm font-medium text-zinc-300 hover:bg-zinc-800 hover:text-white"
-          >
-            {t.label}
-          </Link>
-        ))}
-      </nav>
+      <div className="border-b border-edge">
+        <LeagueTabs base={base} tabs={TABS} />
+      </div>
       {children}
     </div>
   );

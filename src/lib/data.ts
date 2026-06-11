@@ -134,6 +134,21 @@ export async function getSeasonGames(
   return all.flat();
 }
 
+// ---------- Season phase ----------
+
+export type SeasonPhase = "pre" | "live" | "done";
+
+/** Whether a season hasn't started, is underway, or is final. */
+export function seasonPhase(
+  league: SleeperLeague,
+  nflWeek: number,
+): SeasonPhase {
+  if (league.status === "complete") return "done";
+  if (league.status === "pre_draft" || league.status === "drafting")
+    return "pre";
+  return lastCompletedWeek(league, nflWeek) === 0 ? "pre" : "live";
+}
+
 // ---------- League history chain ----------
 
 const MAX_SEASONS = 20;
@@ -200,6 +215,16 @@ export async function getSeasonResult(
     regularSeasonWinner: standings[0] ?? null,
     lastPlace: standings[standings.length - 1] ?? null,
   };
+}
+
+/** Most recent completed season's result in a league's chain (null for a
+ *  league with no finished seasons). */
+export async function getReigningChampion(
+  leagueId: string,
+): Promise<SeasonResult | null> {
+  const chain = await getLeagueChain(leagueId);
+  const lastDone = chain.find((l) => l.status === "complete");
+  return lastDone ? getSeasonResult(lastDone) : null;
 }
 
 // ---------- Power rankings ----------

@@ -1,9 +1,61 @@
 import Link from "next/link";
 import { getLeague, getMatchups, getNflState } from "@/lib/sleeper/api";
-import { getTeams, pairMatchups } from "@/lib/data";
-import { Card, TeamLabel, fmtPts } from "@/components/ui";
+import { getPlayersLite } from "@/lib/sleeper/players";
+import type { SleeperMatchup } from "@/lib/sleeper/types";
+import { getTeams, type Team } from "@/lib/data";
+import { buildTeamBox } from "@/lib/box-score";
+import { Card, EmptyState, PageHeader, TeamLabel, fmtPts } from "@/components/ui";
+import { BoxScore } from "@/components/box-score";
 
 export const revalidate = 300;
+
+interface RawGame {
+  matchupId: number;
+  home: SleeperMatchup;
+  away: SleeperMatchup;
+}
+
+function pairRaw(raw: SleeperMatchup[]): RawGame[] {
+  const byId = new Map<number, SleeperMatchup[]>();
+  for (const m of raw) {
+    if (m.matchup_id == null) continue;
+    const list = byId.get(m.matchup_id) ?? [];
+    list.push(m);
+    byId.set(m.matchup_id, list);
+  }
+  return [...byId.entries()]
+    .filter(([, pair]) => pair.length === 2)
+    .map(([matchupId, [home, away]]) => ({ matchupId, home, away }))
+    .sort((a, b) => a.matchupId - b.matchupId);
+}
+
+function ScoreRows({
+  sides,
+}: {
+  sides: { team: Team; pts: number; win: boolean; played: boolean }[];
+}) {
+  return (
+    <>
+      {sides.map(({ team, pts, win, played }) => (
+        <div
+          key={team.rosterId}
+          className={`flex items-center justify-between gap-3 py-1.5 ${
+            played && !win ? "opacity-60" : ""
+          }`}
+        >
+          <TeamLabel team={team} />
+          <span
+            className={`font-mono text-lg tabular-nums ${
+              win ? "font-bold text-accent" : ""
+            }`}
+          >
+            {fmtPts(pts)}
+          </span>
+        </div>
+      ))}
+    </>
+  );
+}
 
 export default async function MatchupsPage({
   params,
@@ -29,23 +81,27 @@ export default async function MatchupsPage({
     18,
   );
 
-  const games = pairMatchups(
-    week,
-    await getMatchups(leagueId, week).catch(() => []),
-  );
+  const games = pairRaw(await getMatchups(leagueId, week).catch(() => []));
   const playoffStart = league.settings.playoff_week_start || 15;
+  const anyPlayed = games.some(
+    (g) => (g.home.points ?? 0) > 0 || (g.away.points ?? 0) > 0,
+  );
+  const players = anyPlayed ? await getPlayersLite().catch(() => null) : null;
 
   return (
     <div className="space-y-4">
-      <div className="flex flex-wrap gap-1">
+      <div className="-mx-4 flex gap-1.5 overflow-x-auto px-4 no-scrollbar snap-x sm:mx-0 sm:flex-wrap sm:px-0">
         {Array.from({ length: maxWeek }, (_, i) => i + 1).map((w) => (
           <Link
             key={w}
+            prefetch={false}
             href={`/league/${leagueId}/matchups?week=${w}`}
-            className={`rounded-md px-2.5 py-1 font-mono text-sm ${
+            className={`shrink-0 snap-start rounded-md px-2.5 py-1 font-mono text-sm transition-colors ${
               w === week
-                ? "bg-emerald-600 text-white"
-                : "bg-zinc-800 text-zinc-300 hover:bg-zinc-700"
+                ? "bg-accent-strong text-white"
+                : w >= playoffStart
+                  ? "bg-surface-2 text-gold hover:bg-surface-3"
+                  : "bg-surface-2 text-zinc-300 hover:bg-surface-3"
             }`}
           >
             {w}
@@ -53,57 +109,95 @@ export default async function MatchupsPage({
         ))}
       </div>
 
-      <h2 className="text-lg font-semibold">
-        Week {week}
+      <PageHeader
+        title={`Week ${week}`}
+        subtitle={
+          anyPlayed ? "Tap a finished game for the full box score" : undefined
+        }
+      >
         {week >= playoffStart && (
-          <span className="ml-2 rounded-full bg-amber-500/20 px-2 py-0.5 text-xs font-medium text-amber-400">
+          <span className="rounded-full border border-gold/30 bg-amber-500/15 px-2.5 py-0.5 text-xs font-medium text-gold">
             Playoffs
           </span>
         )}
-      </h2>
+      </PageHeader>
 
       {games.length === 0 ? (
         <Card>
-          <p className="text-sm text-zinc-400">No matchups for this week.</p>
+          <EmptyState
+            title="Nothing's cooking this week."
+            hint="Matchups appear once Sleeper sets the schedule."
+          />
         </Card>
       ) : (
         <div className="grid gap-4 sm:grid-cols-2">
           {games.map((g) => {
-            const home = teams.get(g.home.rosterId);
-            const away = teams.get(g.away.rosterId);
+            const home = teams.get(g.home.roster_id);
+            const away = teams.get(g.away.roster_id);
             if (!home || !away) return null;
-            const played = g.home.points > 0 || g.away.points > 0;
-            const homeWins = played && g.home.points > g.away.points;
-            const awayWins = played && g.away.points > g.home.points;
-            const margin = Math.abs(g.home.points - g.away.points);
-            return (
-              <Card key={g.matchupId}>
-                {[
-                  { team: home, pts: g.home.points, win: homeWins },
-                  { team: away, pts: g.away.points, win: awayWins },
-                ].map(({ team, pts, win }) => (
-                  <div
-                    key={team.rosterId}
-                    className={`flex items-center justify-between gap-3 py-1.5 ${
-                      played && !win ? "opacity-70" : ""
-                    }`}
-                  >
-                    <TeamLabel team={team} />
-                    <span
-                      className={`font-mono text-lg ${win ? "font-bold text-emerald-400" : ""}`}
-                    >
-                      {fmtPts(pts)}
-                    </span>
-                  </div>
-                ))}
-                {played && (
-                  <p className="mt-1 border-t border-zinc-800 pt-2 text-xs text-zinc-500">
-                    {margin === 0
-                      ? "Tie game"
-                      : `Margin: ${fmtPts(margin)} pts`}
+            const hPts = g.home.points ?? 0;
+            const aPts = g.away.points ?? 0;
+            const played = hPts > 0 || aPts > 0;
+            const margin = Math.abs(hPts - aPts);
+            const sides = [
+              { team: home, pts: hPts, win: played && hPts > aPts, played },
+              { team: away, pts: aPts, win: played && aPts > hPts, played },
+            ];
+
+            const homeBox =
+              played && players
+                ? buildTeamBox(g.home, league.roster_positions, players)
+                : null;
+            const awayBox =
+              played && players
+                ? buildTeamBox(g.away, league.roster_positions, players)
+                : null;
+
+            if (!played || !homeBox || !awayBox) {
+              return (
+                <Card key={g.matchupId}>
+                  <ScoreRows sides={sides} />
+                  <p className="mt-1 border-t border-edge pt-2 text-xs text-zinc-500">
+                    {played
+                      ? margin === 0
+                        ? "Tie game"
+                        : `Margin: ${fmtPts(margin)} pts — no play-by-play for this one`
+                      : "Kickoff pending"}
                   </p>
-                )}
-              </Card>
+                </Card>
+              );
+            }
+
+            return (
+              <details
+                key={g.matchupId}
+                className="group rounded-card border border-edge bg-surface-1 transition-colors open:border-edge-strong sm:col-span-1 open:sm:col-span-2"
+              >
+                <summary className="cursor-pointer select-none list-none p-4 [&::-webkit-details-marker]:hidden">
+                  <ScoreRows sides={sides} />
+                  <p className="mt-1 flex items-center justify-between border-t border-edge pt-2 text-xs text-zinc-500">
+                    <span>
+                      {margin === 0
+                        ? "Tie game"
+                        : `Margin: ${fmtPts(margin)} pts`}
+                    </span>
+                    <span className="flex items-center gap-1 font-medium text-accent">
+                      Box score
+                      <span className="inline-block transition-transform group-open:rotate-180">
+                        ▾
+                      </span>
+                    </span>
+                  </p>
+                </summary>
+                <div className="border-t border-edge px-4 pb-4 pt-3">
+                  <BoxScore
+                    home={home}
+                    away={away}
+                    homeBox={homeBox}
+                    awayBox={awayBox}
+                  />
+                </div>
+              </details>
             );
           })}
         </div>
