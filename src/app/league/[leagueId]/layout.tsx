@@ -1,4 +1,5 @@
 import { getLeague, getNflState } from "@/lib/sleeper/api";
+import { displayLeagueName } from "@/lib/config";
 import { seasonPhase } from "@/lib/data";
 import { Avatar } from "@/components/ui";
 import { LeagueTabs } from "@/components/nav";
@@ -51,7 +52,9 @@ export default async function LeagueLayout({
         )}
         <div className="min-w-0">
           <h1 className="flex flex-wrap items-center gap-2 text-2xl font-black tracking-tight">
-            <span className="truncate">{league?.name ?? "League"}</span>
+            <span className="truncate">
+              {league ? displayLeagueName(league.name) : "League"}
+            </span>
             {phase && <StatusChip phase={phase} />}
           </h1>
           {league && (

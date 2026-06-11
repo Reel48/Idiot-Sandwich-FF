@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { LEAGUE_IDS } from "@/lib/config";
+import { LEAGUE_IDS, displayLeagueName } from "@/lib/config";
 import { getLeague, getNflState } from "@/lib/sleeper/api";
 import {
   getReigningChampion,
@@ -117,7 +117,9 @@ async function LeagueCard({
           <div className="flex items-center justify-between gap-3">
             <span className="flex min-w-0 items-center gap-2.5">
               <Avatar avatar={league.avatar} size={36} alt={league.name} />
-              <span className="truncate text-lg font-bold">{league.name}</span>
+              <span className="truncate text-lg font-bold">
+                {displayLeagueName(league.name)}
+              </span>
             </span>
             <span
               className={`shrink-0 rounded-full border px-2.5 py-0.5 text-xs font-medium ${chip}`}

@@ -17,3 +17,14 @@ export const LEAGUE_IDS: string[] = fromEnv.length
   : DEFAULT_LEAGUE_IDS;
 
 export const SITE_NAME = "Idiot Sandwich FF";
+
+// Short display names for the site, keyed by the league's name on Sleeper
+// (covers past seasons in each league's chain too).
+const LEAGUE_NAME_OVERRIDES: Record<string, string> = {
+  "Idiot Sandwich Regular": "Regular",
+  "Idiot Sandwich": "Dynasty",
+};
+
+export function displayLeagueName(sleeperName: string): string {
+  return LEAGUE_NAME_OVERRIDES[sleeperName] ?? sleeperName;
+}

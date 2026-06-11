@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import Link from "next/link";
 import "./globals.css";
-import { LEAGUE_IDS, SITE_NAME } from "@/lib/config";
+import { LEAGUE_IDS, SITE_NAME, displayLeagueName } from "@/lib/config";
 import { getLeague } from "@/lib/sleeper/api";
 import { HeaderLeagueLinks } from "@/components/nav";
 
@@ -28,7 +28,7 @@ async function LeagueLinks() {
   );
   const items = leagues
     .filter((l) => l !== null)
-    .map((l) => ({ id: l.league_id, name: l.name }));
+    .map((l) => ({ id: l.league_id, name: displayLeagueName(l.name) }));
   return <HeaderLeagueLinks leagues={items} />;
 }
 
