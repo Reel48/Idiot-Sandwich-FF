@@ -37,3 +37,15 @@
     display: none;
   }
 }
+
+/* Horizontally scrollable tables keep their first column pinned so row
+   identity survives the scroll. Background matches the card surface. */
+@utility table-sticky-col {
+  & th:first-child,
+  & td:first-child {
+    position: sticky;
+    left: 0;
+    z-index: 10;
+    background-color: var(--color-surface-1);
+  }
+}

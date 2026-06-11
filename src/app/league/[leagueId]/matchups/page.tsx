@@ -96,7 +96,7 @@ export default async function MatchupsPage({
             key={w}
             prefetch={false}
             href={`/league/${leagueId}/matchups?week=${w}`}
-            className={`shrink-0 snap-start rounded-md px-2.5 py-1 font-mono text-sm transition-colors ${
+            className={`shrink-0 snap-start rounded-md px-3 py-1.5 font-mono text-sm transition-colors ${
               w === week
                 ? "bg-accent-strong text-white"
                 : w >= playoffStart

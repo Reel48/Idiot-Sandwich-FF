@@ -405,6 +405,8 @@ export interface H2HCell {
   wins: number;
   losses: number;
   ties: number;
+  pf: number; // points scored against this opponent
+  pa: number; // points conceded to this opponent
 }
 
 export interface AllTimeData {
@@ -425,7 +427,7 @@ export async function getAllTimeData(leagueId: string): Promise<AllTimeData> {
     let row = h2h.get(a);
     if (!row) h2h.set(a, (row = new Map()));
     let c = row.get(b);
-    if (!c) row.set(b, (c = { wins: 0, losses: 0, ties: 0 }));
+    if (!c) row.set(b, (c = { wins: 0, losses: 0, ties: 0, pf: 0, pa: 0 }));
     return c;
   };
 
@@ -490,15 +492,21 @@ export async function getAllTimeData(leagueId: string): Promise<AllTimeData> {
           f.lowGame = entry;
       }
 
+      const ab = cell(a.ownerId, b.ownerId);
+      const ba = cell(b.ownerId, a.ownerId);
+      ab.pf += g.home.points;
+      ab.pa += g.away.points;
+      ba.pf += g.away.points;
+      ba.pa += g.home.points;
       if (g.home.points === g.away.points) {
-        cell(a.ownerId, b.ownerId).ties++;
-        cell(b.ownerId, a.ownerId).ties++;
+        ab.ties++;
+        ba.ties++;
       } else if (g.home.points > g.away.points) {
-        cell(a.ownerId, b.ownerId).wins++;
-        cell(b.ownerId, a.ownerId).losses++;
+        ab.wins++;
+        ba.losses++;
       } else {
-        cell(a.ownerId, b.ownerId).losses++;
-        cell(b.ownerId, a.ownerId).wins++;
+        ab.losses++;
+        ba.wins++;
       }
     }
   }
