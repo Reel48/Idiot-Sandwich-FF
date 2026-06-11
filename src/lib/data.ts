@@ -47,7 +47,7 @@ export function buildTeams(
         user?.metadata?.team_name ||
         user?.display_name ||
         `Team ${r.roster_id}`,
-      ownerName: user?.display_name ?? "(orphaned)",
+      ownerName: user?.display_name ?? "Open team",
       avatar: user?.avatar ?? null,
       wins: s.wins ?? 0,
       losses: s.losses ?? 0,

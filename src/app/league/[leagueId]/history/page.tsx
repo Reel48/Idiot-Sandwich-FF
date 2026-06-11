@@ -46,7 +46,11 @@ export default async function HistoryPage({
                 </div>
               </div>
             )}
-            {s.regularSeasonWinner && (
+            {s.regularSeasonWinner &&
+              s.regularSeasonWinner.wins +
+                s.regularSeasonWinner.losses +
+                s.regularSeasonWinner.ties >
+                0 && (
               <div className="rounded-lg bg-zinc-800/60 p-3">
                 <div className="text-xs font-medium uppercase tracking-wider text-zinc-400">
                   📈 Best regular season
