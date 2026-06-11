@@ -45,7 +45,8 @@
   & td:first-child {
     position: sticky;
     left: 0;
-    z-index: 10;
+    /* Above sibling cells only — must stay below the sticky site header. */
+    z-index: 1;
     background-color: var(--color-surface-1);
   }
 }

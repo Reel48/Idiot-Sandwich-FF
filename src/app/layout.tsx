@@ -43,7 +43,7 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="flex min-h-full flex-col bg-surface-0 font-sans text-zinc-100">
-        <header className="sticky top-0 z-10 border-b border-edge bg-surface-0/90 backdrop-blur">
+        <header className="sticky top-0 z-30 border-b border-edge bg-surface-0/90 backdrop-blur">
           <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3">
             <Link href="/" className="flex shrink-0 items-center gap-2">
               <span className="text-xl">🥪</span>
