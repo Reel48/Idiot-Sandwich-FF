@@ -1,12 +1,14 @@
 import { getNflState } from "@/lib/sleeper/api";
 import {
   getLeagueChain,
+  getPlayoffBracket,
   getSeasonResult,
   seasonPhase,
   type Team,
 } from "@/lib/data";
 import { Avatar, Card, PageHeader } from "@/components/ui";
 import { StandingsTable } from "@/components/standings";
+import { PlayoffBracketView } from "@/components/playoff-bracket";
 
 export const revalidate = 3600;
 
@@ -60,6 +62,14 @@ export default async function HistoryPage({
     getNflState(),
   ]);
   const seasons = await Promise.all(chain.map((l) => getSeasonResult(l)));
+  const brackets = await Promise.all(
+    chain.map((l) =>
+      l.status === "complete" ? getPlayoffBracket(l).catch(() => null) : null,
+    ),
+  );
+  const bracketByLeague = new Map(
+    chain.map((l, i) => [l.league_id, brackets[i]] as const),
+  );
 
   return (
     <div className="space-y-6">
@@ -138,6 +148,24 @@ export default async function HistoryPage({
               teams={s.standings}
               champRosterId={s.champion?.rosterId}
             />
+
+            {(() => {
+              const bracket = bracketByLeague.get(s.league.league_id);
+              if (!bracket) return null;
+              return (
+                <details className="group mt-4 rounded-lg border border-edge bg-surface-2/40">
+                  <summary className="flex cursor-pointer items-center justify-between gap-2 px-3 py-2 text-sm font-medium text-zinc-300 [&::-webkit-details-marker]:hidden">
+                    <span>🏟️ Playoff bracket</span>
+                    <span className="text-xs text-zinc-500 transition-transform group-open:rotate-180">
+                      ▾
+                    </span>
+                  </summary>
+                  <div className="border-t border-edge px-3 py-3">
+                    <PlayoffBracketView bracket={bracket} />
+                  </div>
+                </details>
+              );
+            })()}
           </Card>
         );
       })}

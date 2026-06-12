@@ -217,6 +217,180 @@ export async function getSeasonResult(
   };
 }
 
+// ---------- Playoffs ----------
+
+export interface PlayoffSide {
+  rosterId: number;
+  team: Team | null;
+  weekPoints: number[]; // one entry per week the round spans
+  total: number;
+}
+
+export interface PlayoffMatch {
+  round: number;
+  matchId: number;
+  weeks: number[]; // 1 or 2 week numbers depending on playoff_round_type
+  /** Place this match decides (1 = championship, 3 = third place, etc.). */
+  place: number | null;
+  /** "Championship", "Semifinal", "Quarterfinal", "3rd place", etc. */
+  label: string;
+  top: PlayoffSide | null;
+  bottom: PlayoffSide | null;
+  winnerRosterId: number | null;
+  loserRosterId: number | null;
+}
+
+export interface PlayoffRound {
+  round: number;
+  weeks: number[];
+  /** "Championship" / "Semifinals" / "Quarterfinals" etc. */
+  label: string;
+  matches: PlayoffMatch[];
+}
+
+export interface PlayoffBracket {
+  league: SleeperLeague;
+  rounds: PlayoffRound[];
+  /** True if the league setting puts the final round across two weeks. */
+  twoWeekFinal: boolean;
+  /** True if every playoff round is two weeks. */
+  twoWeekAll: boolean;
+}
+
+/** Number of weeks each playoff round spans. Sleeper's `playoff_round_type`:
+ *  0 = one-week rounds, 1 = two-week championship only, 2 = two-week rounds. */
+function roundWeekCount(
+  round: number,
+  maxRound: number,
+  roundType: number,
+): number {
+  if (roundType === 2) return 2;
+  if (roundType === 1 && round === maxRound) return 2;
+  return 1;
+}
+
+function ordinal(n: number): string {
+  const mod100 = n % 100;
+  if (mod100 >= 11 && mod100 <= 13) return `${n}th`;
+  switch (n % 10) {
+    case 1:
+      return `${n}st`;
+    case 2:
+      return `${n}nd`;
+    case 3:
+      return `${n}rd`;
+    default:
+      return `${n}th`;
+  }
+}
+
+function roundLabel(round: number, maxRound: number, place: number | null) {
+  if (place && place > 1) return `${ordinal(place)} place`;
+  if (round === maxRound) return "Championship";
+  if (round === maxRound - 1) return "Semifinal";
+  if (round === maxRound - 2) return "Quarterfinal";
+  return `Round ${round}`;
+}
+
+export async function getPlayoffBracket(
+  league: SleeperLeague,
+): Promise<PlayoffBracket | null> {
+  if (league.status !== "complete") return null;
+  const revalidate = HISTORICAL;
+  const [teams, bracket] = await Promise.all([
+    getTeams(league.league_id, revalidate),
+    getWinnersBracket(league.league_id, revalidate).catch(
+      () => [] as SleeperBracketMatch[],
+    ),
+  ]);
+  if (!bracket.length) return null;
+
+  const maxRound = bracket.reduce((m, x) => Math.max(m, x.r), 0);
+  const roundType = league.settings.playoff_round_type ?? 0;
+  const playoffStart = league.settings.playoff_week_start || 15;
+
+  // Map each round -> array of weeks it spans.
+  const weeksByRound = new Map<number, number[]>();
+  let cursor = playoffStart;
+  for (let r = 1; r <= maxRound; r++) {
+    const span = roundWeekCount(r, maxRound, roundType);
+    weeksByRound.set(
+      r,
+      Array.from({ length: span }, (_, i) => cursor + i),
+    );
+    cursor += span;
+  }
+
+  // Fetch every week's matchups (deduped).
+  const allWeeks = Array.from(new Set([...weeksByRound.values()].flat()));
+  const matchupsByWeek = new Map<number, SleeperMatchup[]>();
+  await Promise.all(
+    allWeeks.map(async (w) => {
+      const ms = await getMatchups(league.league_id, w, revalidate).catch(
+        () => [] as SleeperMatchup[],
+      );
+      matchupsByWeek.set(w, ms);
+    }),
+  );
+
+  const pointsFor = (rosterId: number, week: number): number => {
+    const ms = matchupsByWeek.get(week);
+    return ms?.find((m) => m.roster_id === rosterId)?.points ?? 0;
+  };
+
+  const side = (
+    rosterId: number | null,
+    weeks: number[],
+  ): PlayoffSide | null => {
+    if (rosterId == null) return null;
+    const weekPoints = weeks.map((w) => pointsFor(rosterId, w));
+    return {
+      rosterId,
+      team: teams.get(rosterId) ?? null,
+      weekPoints,
+      total: weekPoints.reduce((s, p) => s + p, 0),
+    };
+  };
+
+  const resolveSeed = (t: SleeperBracketMatch["t1"]): number | null =>
+    typeof t === "number" ? t : null;
+
+  const rounds: PlayoffRound[] = [];
+  for (let r = 1; r <= maxRound; r++) {
+    const matches = bracket
+      .filter((b) => b.r === r)
+      .sort((a, b) => a.m - b.m)
+      .map<PlayoffMatch>((b) => {
+        const weeks = weeksByRound.get(r) ?? [];
+        return {
+          round: r,
+          matchId: b.m,
+          weeks,
+          place: b.p ?? null,
+          label: roundLabel(r, maxRound, b.p ?? null),
+          top: side(resolveSeed(b.t1), weeks),
+          bottom: side(resolveSeed(b.t2), weeks),
+          winnerRosterId: b.w ?? null,
+          loserRosterId: b.l ?? null,
+        };
+      });
+    if (!matches.length) continue;
+    rounds.push({
+      round: r,
+      weeks: weeksByRound.get(r) ?? [],
+      label: roundLabel(r, maxRound, null),
+      matches,
+    });
+  }
+
+  return {
+    league,
+    rounds,
+    twoWeekFinal: roundType === 1,
+    twoWeekAll: roundType === 2,
+  };
+}
+
 /** Most recent completed season's result in a league's chain (null for a
  *  league with no finished seasons). */
 export async function getReigningChampion(
