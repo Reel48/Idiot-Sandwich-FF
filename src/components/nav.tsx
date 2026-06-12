@@ -39,7 +39,7 @@ export function LeagueTabs({
 export function HeaderLeagueLinks({
   leagues,
 }: {
-  leagues: { href: string; name: string }[];
+  leagues: { href: string; name: string; mobileHidden?: boolean }[];
 }) {
   const pathname = usePathname();
   return (
@@ -51,6 +51,8 @@ export function HeaderLeagueLinks({
             key={l.href}
             href={l.href}
             className={`whitespace-nowrap rounded-md px-3 py-1.5 text-sm font-medium transition-colors ${
+              l.mobileHidden ? "hidden sm:inline-block" : ""
+            } ${
               active
                 ? "bg-surface-2 text-white shadow-[inset_0_-2px_0_0_var(--color-accent)]"
                 : "text-zinc-400 hover:bg-surface-2 hover:text-white"

@@ -32,7 +32,7 @@ async function LeagueLinks() {
       href: `/league/${l.league_id}`,
       name: displayLeagueName(l.name),
     }));
-  items.push({ href: "/espn", name: "ESPN Era" });
+  items.push({ href: "/espn", name: "ESPN Era", mobileHidden: true });
   return <HeaderLeagueLinks leagues={items} />;
 }
 
