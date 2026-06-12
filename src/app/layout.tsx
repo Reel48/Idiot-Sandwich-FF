@@ -28,7 +28,11 @@ async function LeagueLinks() {
   );
   const items = leagues
     .filter((l) => l !== null)
-    .map((l) => ({ id: l.league_id, name: displayLeagueName(l.name) }));
+    .map((l) => ({
+      href: `/league/${l.league_id}`,
+      name: displayLeagueName(l.name),
+    }));
+  items.push({ href: "/espn", name: "ESPN Era" });
   return <HeaderLeagueLinks leagues={items} />;
 }
 

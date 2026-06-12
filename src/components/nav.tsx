@@ -39,17 +39,17 @@ export function LeagueTabs({
 export function HeaderLeagueLinks({
   leagues,
 }: {
-  leagues: { id: string; name: string }[];
+  leagues: { href: string; name: string }[];
 }) {
   const pathname = usePathname();
   return (
     <nav className="flex items-center gap-1 overflow-x-auto no-scrollbar">
       {leagues.map((l) => {
-        const active = pathname.startsWith(`/league/${l.id}`);
+        const active = pathname.startsWith(l.href);
         return (
           <Link
-            key={l.id}
-            href={`/league/${l.id}`}
+            key={l.href}
+            href={l.href}
             className={`whitespace-nowrap rounded-md px-3 py-1.5 text-sm font-medium transition-colors ${
               active
                 ? "bg-surface-2 text-white shadow-[inset_0_-2px_0_0_var(--color-accent)]"

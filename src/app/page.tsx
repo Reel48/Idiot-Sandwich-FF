@@ -171,6 +171,23 @@ export default async function Home() {
           <LeagueCard key={id} leagueId={id} nflWeek={nfl?.week ?? 0} />
         ))}
       </div>
+      <Link href="/espn" className="group block">
+        <Card className="group-hover:border-accent/60 group-hover:bg-surface-2/40">
+          <div className="flex flex-wrap items-center gap-3">
+            <span className="text-2xl">📼</span>
+            <span className="min-w-0 flex-1">
+              <span className="block font-bold">The ESPN Era</span>
+              <span className="block text-sm text-zinc-400">
+                2017–2025 archive — every champion, sandwich, and grudge from
+                before the move to Sleeper.
+              </span>
+            </span>
+            <span className="text-sm font-medium text-accent">
+              View archive →
+            </span>
+          </div>
+        </Card>
+      </Link>
     </div>
   );
 }

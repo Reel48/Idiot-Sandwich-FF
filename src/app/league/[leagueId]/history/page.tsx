@@ -1,4 +1,6 @@
+import Link from "next/link";
 import { getNflState } from "@/lib/sleeper/api";
+import { displayLeagueName } from "@/lib/config";
 import {
   getLeagueChain,
   getPlayoffBracket,
@@ -169,6 +171,26 @@ export default async function HistoryPage({
           </Card>
         );
       })}
+      {chain[0] && displayLeagueName(chain[0].name) === "Regular" && (
+        <Link href="/espn" className="group block">
+          <Card className="group-hover:border-accent/60 group-hover:bg-surface-2/40">
+            <div className="flex flex-wrap items-center gap-3">
+              <span className="text-2xl">📼</span>
+              <span className="min-w-0 flex-1">
+                <span className="block font-bold">
+                  Before Sleeper: the ESPN era
+                </span>
+                <span className="block text-sm text-zinc-400">
+                  This league&apos;s 2017–2025 seasons live in the archive.
+                </span>
+              </span>
+              <span className="text-sm font-medium text-accent">
+                View archive →
+              </span>
+            </div>
+          </Card>
+        </Link>
+      )}
     </div>
   );
 }

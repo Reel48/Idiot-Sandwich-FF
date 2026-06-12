@@ -68,5 +68,8 @@ export const getDraftPicks = (draftId: string) =>
 
 export function avatarUrl(avatar: string | null | undefined, thumb = true) {
   if (!avatar) return null;
+  // Absolute URLs and local paths pass through untouched (ESPN-era team
+  // logos mirrored under /espn-logos); bare ids are Sleeper CDN avatars.
+  if (/^(https?:\/\/|\/)/.test(avatar)) return avatar;
   return `https://sleepercdn.com/avatars/${thumb ? "thumbs/" : ""}${avatar}`;
 }

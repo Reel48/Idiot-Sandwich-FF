@@ -1,0 +1,1531 @@
+{
+  "season": 2024,
+  "name": "Idiot Sandwich",
+  "regularSeasonWeeks": 13,
+  "playoffTeams": 6,
+  "members": [
+    {
+      "id": "{14D20166-5FB5-450A-8C7F-DF85E1FFFDCD}",
+      "displayName": "espn31337196",
+      "firstName": "Dylan",
+      "lastName": "Hare"
+    },
+    {
+      "id": "{2697F3FB-0EAB-4E9D-97F3-FB0EAB6E9D26}",
+      "displayName": "Luke4132",
+      "firstName": "Luke",
+      "lastName": "Morreale"
+    },
+    {
+      "id": "{3A6880FB-2419-4C6B-9E3D-1EAF72B1F41E}",
+      "displayName": "espn05571979",
+      "firstName": "Jase",
+      "lastName": "Rupert"
+    },
+    {
+      "id": "{5060DCD4-9D2C-46E4-8E0C-BEF0B9AB29F1}",
+      "displayName": "ESPNfan08210055",
+      "firstName": "Trumane",
+      "lastName": "Bell II"
+    },
+    {
+      "id": "{68B69E06-546D-4D92-B9B0-A184B92656E0}",
+      "displayName": "ESPNfan1660015946",
+      "firstName": "Tron",
+      "lastName": "Rideaux"
+    },
+    {
+      "id": "{83E22E4B-4FE8-4DC6-A22E-4B4FE85DC663}",
+      "displayName": "espn00826071",
+      "firstName": "Bucky",
+      "lastName": "Lemons"
+    },
+    {
+      "id": "{9342ED33-B834-4070-82ED-33B834C0706A}",
+      "displayName": "Brayden9817",
+      "firstName": "Brayden",
+      "lastName": "Pomirko"
+    },
+    {
+      "id": "{C8194882-8DA5-49AF-AE8C-B1C79549CC00}",
+      "displayName": "espnfan0741378950",
+      "firstName": "Kenneth",
+      "lastName": "Hayman"
+    },
+    {
+      "id": "{CBB5CBB4-E208-43D9-B5CB-B4E208F3D9A6}",
+      "displayName": "Golden hammers",
+      "firstName": "Brayden",
+      "lastName": "Pelt"
+    },
+    {
+      "id": "{F7C3B98F-62DD-4E09-B4A9-43354477DC90}",
+      "displayName": "GKash55",
+      "firstName": "Greyson",
+      "lastName": "Kash"
+    },
+    {
+      "id": "{F7D50871-DFDD-473D-9508-71DFDD573D17}",
+      "displayName": "Longhorn3360",
+      "firstName": "Grayson",
+      "lastName": "Briggs"
+    },
+    {
+      "id": "{FA4C9844-9EB6-483D-8C98-449EB6D83D3B}",
+      "displayName": "k-dawg578",
+      "firstName": "kelechi",
+      "lastName": "nwachuku"
+    }
+  ],
+  "teams": [
+    {
+      "id": 1,
+      "abbrev": "PELT",
+      "name": "Bijan Schmijan's",
+      "logo": "/espn-logos/ea0ab9c5f2.svg",
+      "owners": [
+        "{CBB5CBB4-E208-43D9-B5CB-B4E208F3D9A6}"
+      ],
+      "playoffSeed": 5,
+      "finalRank": 5,
+      "wins": 7,
+      "losses": 6,
+      "ties": 0,
+      "pointsFor": 1510.8600000000001,
+      "pointsAgainst": 1467.14
+    },
+    {
+      "id": 2,
+      "abbrev": "PFWG",
+      "name": "Purdy Fly for a White Guy",
+      "logo": "/espn-logos/16cb457b31.svg",
+      "owners": [
+        "{3A6880FB-2419-4C6B-9E3D-1EAF72B1F41E}"
+      ],
+      "playoffSeed": 8,
+      "finalRank": 10,
+      "wins": 6,
+      "losses": 7,
+      "ties": 0,
+      "pointsFor": 1457.56,
+      "pointsAgainst": 1438.34
+    },
+    {
+      "id": 4,
+      "abbrev": "Poo",
+      "name": "Poop time",
+      "logo": "/espn-logos/638d5378b3.svg",
+      "owners": [
+        "{68B69E06-546D-4D92-B9B0-A184B92656E0}"
+      ],
+      "playoffSeed": 11,
+      "finalRank": 11,
+      "wins": 5,
+      "losses": 8,
+      "ties": 0,
+      "pointsFor": 1404.2599999999998,
+      "pointsAgainst": 1545.22
+    },
+    {
+      "id": 5,
+      "abbrev": "POMI",
+      "name": "Nabers Think I'm Sellin Dope",
+      "logo": "/espn-logos/8b6b774725.svg",
+      "owners": [
+        "{9342ED33-B834-4070-82ED-33B834C0706A}"
+      ],
+      "playoffSeed": 2,
+      "finalRank": 1,
+      "wins": 8,
+      "losses": 5,
+      "ties": 0,
+      "pointsFor": 1580.34,
+      "pointsAgainst": 1578.72
+    },
+    {
+      "id": 6,
+      "abbrev": "Kash",
+      "name": "Demar-diac Arrest",
+      "logo": "/espn-logos/5e24cc0812.svg",
+      "owners": [
+        "{F7C3B98F-62DD-4E09-B4A9-43354477DC90}"
+      ],
+      "playoffSeed": 1,
+      "finalRank": 2,
+      "wins": 10,
+      "losses": 3,
+      "ties": 0,
+      "pointsFor": 1632.1800000000003,
+      "pointsAgainst": 1414.3999999999999
+    },
+    {
+      "id": 7,
+      "abbrev": "HAYD",
+      "name": "Butker right in the Charbonnet",
+      "logo": "/espn-logos/ad5ce6b95a.svg",
+      "owners": [
+        "{C8194882-8DA5-49AF-AE8C-B1C79549CC00}"
+      ],
+      "playoffSeed": 3,
+      "finalRank": 6,
+      "wins": 8,
+      "losses": 5,
+      "ties": 0,
+      "pointsFor": 1524.3600000000001,
+      "pointsAgainst": 1463.2
+    },
+    {
+      "id": 8,
+      "abbrev": "NWAC",
+      "name": "Bateman's Breakout",
+      "logo": "/espn-logos/f65ce69bfc.svg",
+      "owners": [
+        "{FA4C9844-9EB6-483D-8C98-449EB6D83D3B}"
+      ],
+      "playoffSeed": 4,
+      "finalRank": 3,
+      "wins": 8,
+      "losses": 5,
+      "ties": 0,
+      "pointsFor": 1494.8600000000001,
+      "pointsAgainst": 1425.76
+    },
+    {
+      "id": 9,
+      "abbrev": "LEMO",
+      "name": "Better Call Hall",
+      "logo": "/espn-logos/31828cc957.svg",
+      "owners": [
+        "{83E22E4B-4FE8-4DC6-A22E-4B4FE85DC663}"
+      ],
+      "playoffSeed": 6,
+      "finalRank": 4,
+      "wins": 7,
+      "losses": 6,
+      "ties": 0,
+      "pointsFor": 1461.4399999999998,
+      "pointsAgainst": 1413.34
+    },
+    {
+      "id": 10,
+      "abbrev": "J19",
+      "name": "Joevid-19",
+      "logo": "/espn-logos/2bea8434ca.svg",
+      "owners": [
+        "{2697F3FB-0EAB-4E9D-97F3-FB0EAB6E9D26}"
+      ],
+      "playoffSeed": 7,
+      "finalRank": 7,
+      "wins": 6,
+      "losses": 7,
+      "ties": 0,
+      "pointsFor": 1638.4000000000003,
+      "pointsAgainst": 1615.46
+    },
+    {
+      "id": 11,
+      "abbrev": "Nico",
+      "name": "Nico-tine Fiends",
+      "logo": "/espn-logos/48e59233a9.jpg",
+      "owners": [
+        "{F7D50871-DFDD-473D-9508-71DFDD573D17}"
+      ],
+      "playoffSeed": 9,
+      "finalRank": 9,
+      "wins": 6,
+      "losses": 7,
+      "ties": 0,
+      "pointsFor": 1404.1999999999998,
+      "pointsAgainst": 1454.32
+    },
+    {
+      "id": 12,
+      "abbrev": "TTT",
+      "name": "Trumane's Tenacious Team",
+      "logo": "/espn-logos/5f509bbe57.svg",
+      "owners": [
+        "{5060DCD4-9D2C-46E4-8E0C-BEF0B9AB29F1}"
+      ],
+      "playoffSeed": 12,
+      "finalRank": 12,
+      "wins": 2,
+      "losses": 11,
+      "ties": 0,
+      "pointsFor": 1281.6,
+      "pointsAgainst": 1601.6200000000001
+    },
+    {
+      "id": 13,
+      "abbrev": "dyl",
+      "name": "dylhare",
+      "logo": "/espn-logos/26d8cd57ed.svg",
+      "owners": [
+        "{14D20166-5FB5-450A-8C7F-DF85E1FFFDCD}"
+      ],
+      "playoffSeed": 10,
+      "finalRank": 8,
+      "wins": 5,
+      "losses": 8,
+      "ties": 0,
+      "pointsFor": 1490.54,
+      "pointsAgainst": 1463.0800000000002
+    }
+  ],
+  "schedule": [
+    {
+      "week": 1,
+      "tier": "NONE",
+      "winner": "AWAY",
+      "home": {
+        "teamId": 10,
+        "points": 100.36
+      },
+      "away": {
+        "teamId": 12,
+        "points": 106.22
+      }
+    },
+    {
+      "week": 1,
+      "tier": "NONE",
+      "winner": "AWAY",
+      "home": {
+        "teamId": 2,
+        "points": 108.84
+      },
+      "away": {
+        "teamId": 8,
+        "points": 149.96
+      }
+    },
+    {
+      "week": 1,
+      "tier": "NONE",
+      "winner": "HOME",
+      "home": {
+        "teamId": 6,
+        "points": 175.68
+      },
+      "away": {
+        "teamId": 5,
+        "points": 72.02
+      }
+    },
+    {
+      "week": 1,
+      "tier": "NONE",
+      "winner": "AWAY",
+      "home": {
+        "teamId": 13,
+        "points": 88.48
+      },
+      "away": {
+        "teamId": 1,
+        "points": 108.12
+      }
+    },
+    {
+      "week": 1,
+      "tier": "NONE",
+      "winner": "AWAY",
+      "home": {
+        "teamId": 4,
+        "points": 94.64
+      },
+      "away": {
+        "teamId": 11,
+        "points": 145.6
+      }
+    },
+    {
+      "week": 1,
+      "tier": "NONE",
+      "winner": "HOME",
+      "home": {
+        "teamId": 7,
+        "points": 122.46
+      },
+      "away": {
+        "teamId": 9,
+        "points": 104.7
+      }
+    },
+    {
+      "week": 2,
+      "tier": "NONE",
+      "winner": "AWAY",
+      "home": {
+        "teamId": 12,
+        "points": 91.38
+      },
+      "away": {
+        "teamId": 8,
+        "points": 110.2
+      }
+    },
+    {
+      "week": 2,
+      "tier": "NONE",
+      "winner": "AWAY",
+      "home": {
+        "teamId": 5,
+        "points": 122.02
+      },
+      "away": {
+        "teamId": 10,
+        "points": 144.38
+      }
+    },
+    {
+      "week": 2,
+      "tier": "NONE",
+      "winner": "HOME",
+      "home": {
+        "teamId": 1,
+        "points": 133.14
+      },
+      "away": {
+        "teamId": 2,
+        "points": 86.38
+      }
+    },
+    {
+      "week": 2,
+      "tier": "NONE",
+      "winner": "AWAY",
+      "home": {
+        "teamId": 11,
+        "points": 128.54
+      },
+      "away": {
+        "teamId": 6,
+        "points": 140.74
+      }
+    },
+    {
+      "week": 2,
+      "tier": "NONE",
+      "winner": "HOME",
+      "home": {
+        "teamId": 9,
+        "points": 119.54
+      },
+      "away": {
+        "teamId": 13,
+        "points": 108.86
+      }
+    },
+    {
+      "week": 2,
+      "tier": "NONE",
+      "winner": "HOME",
+      "home": {
+        "teamId": 7,
+        "points": 127.8
+      },
+      "away": {
+        "teamId": 4,
+        "points": 77.64
+      }
+    },
+    {
+      "week": 3,
+      "tier": "NONE",
+      "winner": "HOME",
+      "home": {
+        "teamId": 5,
+        "points": 131.44
+      },
+      "away": {
+        "teamId": 12,
+        "points": 87.48
+      }
+    },
+    {
+      "week": 3,
+      "tier": "NONE",
+      "winner": "AWAY",
+      "home": {
+        "teamId": 8,
+        "points": 97.1
+      },
+      "away": {
+        "teamId": 1,
+        "points": 112.88
+      }
+    },
+    {
+      "week": 3,
+      "tier": "NONE",
+      "winner": "HOME",
+      "home": {
+        "teamId": 10,
+        "points": 121.76
+      },
+      "away": {
+        "teamId": 11,
+        "points": 114.16
+      }
+    },
+    {
+      "week": 3,
+      "tier": "NONE",
+      "winner": "AWAY",
+      "home": {
+        "teamId": 2,
+        "points": 101.18
+      },
+      "away": {
+        "teamId": 9,
+        "points": 111.98
+      }
+    },
+    {
+      "week": 3,
+      "tier": "NONE",
+      "winner": "HOME",
+      "home": {
+        "teamId": 6,
+        "points": 173.28
+      },
+      "away": {
+        "teamId": 7,
+        "points": 100.36
+      }
+    },
+    {
+      "week": 3,
+      "tier": "NONE",
+      "winner": "HOME",
+      "home": {
+        "teamId": 13,
+        "points": 154.92
+      },
+      "away": {
+        "teamId": 4,
+        "points": 85.48
+      }
+    },
+    {
+      "week": 4,
+      "tier": "NONE",
+      "winner": "HOME",
+      "home": {
+        "teamId": 12,
+        "points": 116.74
+      },
+      "away": {
+        "teamId": 1,
+        "points": 106.34
+      }
+    },
+    {
+      "week": 4,
+      "tier": "NONE",
+      "winner": "HOME",
+      "home": {
+        "teamId": 11,
+        "points": 152.12
+      },
+      "away": {
+        "teamId": 5,
+        "points": 120.62
+      }
+    },
+    {
+      "week": 4,
+      "tier": "NONE",
+      "winner": "AWAY",
+      "home": {
+        "teamId": 9,
+        "points": 100.1
+      },
+      "away": {
+        "teamId": 8,
+        "points": 110.7
+      }
+    },
+    {
+      "week": 4,
+      "tier": "NONE",
+      "winner": "AWAY",
+      "home": {
+        "teamId": 7,
+        "points": 97.44
+      },
+      "away": {
+        "teamId": 10,
+        "points": 144.26
+      }
+    },
+    {
+      "week": 4,
+      "tier": "NONE",
+      "winner": "AWAY",
+      "home": {
+        "teamId": 4,
+        "points": 105.2
+      },
+      "away": {
+        "teamId": 2,
+        "points": 117.02
+      }
+    },
+    {
+      "week": 4,
+      "tier": "NONE",
+      "winner": "AWAY",
+      "home": {
+        "teamId": 13,
+        "points": 103.1
+      },
+      "away": {
+        "teamId": 6,
+        "points": 108.08
+      }
+    },
+    {
+      "week": 5,
+      "tier": "NONE",
+      "winner": "HOME",
+      "home": {
+        "teamId": 11,
+        "points": 114.82
+      },
+      "away": {
+        "teamId": 12,
+        "points": 110.22
+      }
+    },
+    {
+      "week": 5,
+      "tier": "NONE",
+      "winner": "AWAY",
+      "home": {
+        "teamId": 1,
+        "points": 111.58
+      },
+      "away": {
+        "teamId": 9,
+        "points": 136.16
+      }
+    },
+    {
+      "week": 5,
+      "tier": "NONE",
+      "winner": "HOME",
+      "home": {
+        "teamId": 5,
+        "points": 135.36
+      },
+      "away": {
+        "teamId": 7,
+        "points": 106.38
+      }
+    },
+    {
+      "week": 5,
+      "tier": "NONE",
+      "winner": "AWAY",
+      "home": {
+        "teamId": 8,
+        "points": 99.34
+      },
+      "away": {
+        "teamId": 4,
+        "points": 144.14
+      }
+    },
+    {
+      "week": 5,
+      "tier": "NONE",
+      "winner": "HOME",
+      "home": {
+        "teamId": 10,
+        "points": 164.98
+      },
+      "away": {
+        "teamId": 13,
+        "points": 106.44
+      }
+    },
+    {
+      "week": 5,
+      "tier": "NONE",
+      "winner": "AWAY",
+      "home": {
+        "teamId": 2,
+        "points": 99.16
+      },
+      "away": {
+        "teamId": 6,
+        "points": 109.4
+      }
+    },
+    {
+      "week": 6,
+      "tier": "NONE",
+      "winner": "AWAY",
+      "home": {
+        "teamId": 12,
+        "points": 109.12
+      },
+      "away": {
+        "teamId": 9,
+        "points": 114.08
+      }
+    },
+    {
+      "week": 6,
+      "tier": "NONE",
+      "winner": "HOME",
+      "home": {
+        "teamId": 7,
+        "points": 106.12
+      },
+      "away": {
+        "teamId": 11,
+        "points": 96.76
+      }
+    },
+    {
+      "week": 6,
+      "tier": "NONE",
+      "winner": "AWAY",
+      "home": {
+        "teamId": 4,
+        "points": 103.9
+      },
+      "away": {
+        "teamId": 1,
+        "points": 120.8
+      }
+    },
+    {
+      "week": 6,
+      "tier": "NONE",
+      "winner": "AWAY",
+      "home": {
+        "teamId": 13,
+        "points": 125.1
+      },
+      "away": {
+        "teamId": 5,
+        "points": 165.46
+      }
+    },
+    {
+      "week": 6,
+      "tier": "NONE",
+      "winner": "HOME",
+      "home": {
+        "teamId": 6,
+        "points": 120.86
+      },
+      "away": {
+        "teamId": 8,
+        "points": 82.58
+      }
+    },
+    {
+      "week": 6,
+      "tier": "NONE",
+      "winner": "HOME",
+      "home": {
+        "teamId": 2,
+        "points": 105.2
+      },
+      "away": {
+        "teamId": 10,
+        "points": 92.42
+      }
+    },
+    {
+      "week": 7,
+      "tier": "NONE",
+      "winner": "HOME",
+      "home": {
+        "teamId": 7,
+        "points": 135.64
+      },
+      "away": {
+        "teamId": 12,
+        "points": 98.04
+      }
+    },
+    {
+      "week": 7,
+      "tier": "NONE",
+      "winner": "AWAY",
+      "home": {
+        "teamId": 9,
+        "points": 94.78
+      },
+      "away": {
+        "teamId": 4,
+        "points": 102.16
+      }
+    },
+    {
+      "week": 7,
+      "tier": "NONE",
+      "winner": "AWAY",
+      "home": {
+        "teamId": 11,
+        "points": 67.24
+      },
+      "away": {
+        "teamId": 13,
+        "points": 136.92
+      }
+    },
+    {
+      "week": 7,
+      "tier": "NONE",
+      "winner": "AWAY",
+      "home": {
+        "teamId": 1,
+        "points": 100.36
+      },
+      "away": {
+        "teamId": 6,
+        "points": 121.4
+      }
+    },
+    {
+      "week": 7,
+      "tier": "NONE",
+      "winner": "HOME",
+      "home": {
+        "teamId": 5,
+        "points": 105.96
+      },
+      "away": {
+        "teamId": 2,
+        "points": 85.88
+      }
+    },
+    {
+      "week": 7,
+      "tier": "NONE",
+      "winner": "HOME",
+      "home": {
+        "teamId": 8,
+        "points": 136
+      },
+      "away": {
+        "teamId": 10,
+        "points": 109.14
+      }
+    },
+    {
+      "week": 8,
+      "tier": "NONE",
+      "winner": "AWAY",
+      "home": {
+        "teamId": 12,
+        "points": 114.06
+      },
+      "away": {
+        "teamId": 4,
+        "points": 121.98
+      }
+    },
+    {
+      "week": 8,
+      "tier": "NONE",
+      "winner": "AWAY",
+      "home": {
+        "teamId": 13,
+        "points": 102.62
+      },
+      "away": {
+        "teamId": 7,
+        "points": 112.12
+      }
+    },
+    {
+      "week": 8,
+      "tier": "NONE",
+      "winner": "HOME",
+      "home": {
+        "teamId": 6,
+        "points": 131.38
+      },
+      "away": {
+        "teamId": 9,
+        "points": 105.88
+      }
+    },
+    {
+      "week": 8,
+      "tier": "NONE",
+      "winner": "HOME",
+      "home": {
+        "teamId": 2,
+        "points": 115.5
+      },
+      "away": {
+        "teamId": 11,
+        "points": 106.54
+      }
+    },
+    {
+      "week": 8,
+      "tier": "NONE",
+      "winner": "AWAY",
+      "home": {
+        "teamId": 10,
+        "points": 94.96
+      },
+      "away": {
+        "teamId": 1,
+        "points": 152.66
+      }
+    },
+    {
+      "week": 8,
+      "tier": "NONE",
+      "winner": "HOME",
+      "home": {
+        "teamId": 8,
+        "points": 150.4
+      },
+      "away": {
+        "teamId": 5,
+        "points": 139.66
+      }
+    },
+    {
+      "week": 9,
+      "tier": "NONE",
+      "winner": "HOME",
+      "home": {
+        "teamId": 13,
+        "points": 128.3
+      },
+      "away": {
+        "teamId": 12,
+        "points": 104.8
+      }
+    },
+    {
+      "week": 9,
+      "tier": "NONE",
+      "winner": "HOME",
+      "home": {
+        "teamId": 4,
+        "points": 109.14
+      },
+      "away": {
+        "teamId": 6,
+        "points": 99.16
+      }
+    },
+    {
+      "week": 9,
+      "tier": "NONE",
+      "winner": "HOME",
+      "home": {
+        "teamId": 7,
+        "points": 133
+      },
+      "away": {
+        "teamId": 2,
+        "points": 121.86
+      }
+    },
+    {
+      "week": 9,
+      "tier": "NONE",
+      "winner": "HOME",
+      "home": {
+        "teamId": 9,
+        "points": 142.02
+      },
+      "away": {
+        "teamId": 10,
+        "points": 115.64
+      }
+    },
+    {
+      "week": 9,
+      "tier": "NONE",
+      "winner": "HOME",
+      "home": {
+        "teamId": 11,
+        "points": 103.36
+      },
+      "away": {
+        "teamId": 8,
+        "points": 100.7
+      }
+    },
+    {
+      "week": 9,
+      "tier": "NONE",
+      "winner": "AWAY",
+      "home": {
+        "teamId": 1,
+        "points": 122.3
+      },
+      "away": {
+        "teamId": 5,
+        "points": 124.2
+      }
+    },
+    {
+      "week": 10,
+      "tier": "NONE",
+      "winner": "AWAY",
+      "home": {
+        "teamId": 12,
+        "points": 105
+      },
+      "away": {
+        "teamId": 6,
+        "points": 129.34
+      }
+    },
+    {
+      "week": 10,
+      "tier": "NONE",
+      "winner": "AWAY",
+      "home": {
+        "teamId": 2,
+        "points": 99.94
+      },
+      "away": {
+        "teamId": 13,
+        "points": 109
+      }
+    },
+    {
+      "week": 10,
+      "tier": "NONE",
+      "winner": "AWAY",
+      "home": {
+        "teamId": 10,
+        "points": 112.22
+      },
+      "away": {
+        "teamId": 4,
+        "points": 155.74
+      }
+    },
+    {
+      "week": 10,
+      "tier": "NONE",
+      "winner": "HOME",
+      "home": {
+        "teamId": 8,
+        "points": 85.94
+      },
+      "away": {
+        "teamId": 7,
+        "points": 76.76
+      }
+    },
+    {
+      "week": 10,
+      "tier": "NONE",
+      "winner": "HOME",
+      "home": {
+        "teamId": 5,
+        "points": 116.78
+      },
+      "away": {
+        "teamId": 9,
+        "points": 101.5
+      }
+    },
+    {
+      "week": 10,
+      "tier": "NONE",
+      "winner": "HOME",
+      "home": {
+        "teamId": 1,
+        "points": 130.74
+      },
+      "away": {
+        "teamId": 11,
+        "points": 88.28
+      }
+    },
+    {
+      "week": 11,
+      "tier": "NONE",
+      "winner": "HOME",
+      "home": {
+        "teamId": 2,
+        "points": 138.76
+      },
+      "away": {
+        "teamId": 12,
+        "points": 53.18
+      }
+    },
+    {
+      "week": 11,
+      "tier": "NONE",
+      "winner": "AWAY",
+      "home": {
+        "teamId": 6,
+        "points": 133.66
+      },
+      "away": {
+        "teamId": 10,
+        "points": 193.46
+      }
+    },
+    {
+      "week": 11,
+      "tier": "NONE",
+      "winner": "AWAY",
+      "home": {
+        "teamId": 13,
+        "points": 114.48
+      },
+      "away": {
+        "teamId": 8,
+        "points": 118.88
+      }
+    },
+    {
+      "week": 11,
+      "tier": "NONE",
+      "winner": "AWAY",
+      "home": {
+        "teamId": 4,
+        "points": 96.54
+      },
+      "away": {
+        "teamId": 5,
+        "points": 109.94
+      }
+    },
+    {
+      "week": 11,
+      "tier": "NONE",
+      "winner": "HOME",
+      "home": {
+        "teamId": 7,
+        "points": 165.98
+      },
+      "away": {
+        "teamId": 1,
+        "points": 90.14
+      }
+    },
+    {
+      "week": 11,
+      "tier": "NONE",
+      "winner": "HOME",
+      "home": {
+        "teamId": 9,
+        "points": 98.1
+      },
+      "away": {
+        "teamId": 11,
+        "points": 72.74
+      }
+    },
+    {
+      "week": 12,
+      "tier": "NONE",
+      "winner": "AWAY",
+      "home": {
+        "teamId": 12,
+        "points": 111.08
+      },
+      "away": {
+        "teamId": 10,
+        "points": 122.66
+      }
+    },
+    {
+      "week": 12,
+      "tier": "NONE",
+      "winner": "AWAY",
+      "home": {
+        "teamId": 8,
+        "points": 105.36
+      },
+      "away": {
+        "teamId": 2,
+        "points": 129.88
+      }
+    },
+    {
+      "week": 12,
+      "tier": "NONE",
+      "winner": "AWAY",
+      "home": {
+        "teamId": 5,
+        "points": 104.06
+      },
+      "away": {
+        "teamId": 6,
+        "points": 108.8
+      }
+    },
+    {
+      "week": 12,
+      "tier": "NONE",
+      "winner": "HOME",
+      "home": {
+        "teamId": 1,
+        "points": 98.6
+      },
+      "away": {
+        "teamId": 13,
+        "points": 95.6
+      }
+    },
+    {
+      "week": 12,
+      "tier": "NONE",
+      "winner": "HOME",
+      "home": {
+        "teamId": 11,
+        "points": 103.3
+      },
+      "away": {
+        "teamId": 4,
+        "points": 97.86
+      }
+    },
+    {
+      "week": 12,
+      "tier": "NONE",
+      "winner": "HOME",
+      "home": {
+        "teamId": 9,
+        "points": 122.76
+      },
+      "away": {
+        "teamId": 7,
+        "points": 94.02
+      }
+    },
+    {
+      "week": 13,
+      "tier": "NONE",
+      "winner": "HOME",
+      "home": {
+        "teamId": 8,
+        "points": 147.7
+      },
+      "away": {
+        "teamId": 12,
+        "points": 74.28
+      }
+    },
+    {
+      "week": 13,
+      "tier": "NONE",
+      "winner": "AWAY",
+      "home": {
+        "teamId": 10,
+        "points": 122.16
+      },
+      "away": {
+        "teamId": 5,
+        "points": 132.82
+      }
+    },
+    {
+      "week": 13,
+      "tier": "NONE",
+      "winner": "HOME",
+      "home": {
+        "teamId": 2,
+        "points": 147.96
+      },
+      "away": {
+        "teamId": 1,
+        "points": 123.2
+      }
+    },
+    {
+      "week": 13,
+      "tier": "NONE",
+      "winner": "AWAY",
+      "home": {
+        "teamId": 6,
+        "points": 80.4
+      },
+      "away": {
+        "teamId": 11,
+        "points": 110.74
+      }
+    },
+    {
+      "week": 13,
+      "tier": "NONE",
+      "winner": "HOME",
+      "home": {
+        "teamId": 13,
+        "points": 116.72
+      },
+      "away": {
+        "teamId": 9,
+        "points": 109.84
+      }
+    },
+    {
+      "week": 13,
+      "tier": "NONE",
+      "winner": "AWAY",
+      "home": {
+        "teamId": 4,
+        "points": 109.84
+      },
+      "away": {
+        "teamId": 7,
+        "points": 146.28
+      }
+    },
+    {
+      "week": 14,
+      "tier": "WINNERS_BRACKET",
+      "winner": "UNDECIDED",
+      "home": {
+        "teamId": 6,
+        "points": 102.16
+      },
+      "away": null
+    },
+    {
+      "week": 14,
+      "tier": "WINNERS_BRACKET",
+      "winner": "HOME",
+      "home": {
+        "teamId": 8,
+        "points": 135.3
+      },
+      "away": {
+        "teamId": 1,
+        "points": 104.38
+      }
+    },
+    {
+      "week": 14,
+      "tier": "WINNERS_BRACKET",
+      "winner": "AWAY",
+      "home": {
+        "teamId": 7,
+        "points": 131.62
+      },
+      "away": {
+        "teamId": 9,
+        "points": 154.1
+      }
+    },
+    {
+      "week": 14,
+      "tier": "WINNERS_BRACKET",
+      "winner": "UNDECIDED",
+      "home": {
+        "teamId": 5,
+        "points": 110.02
+      },
+      "away": null
+    },
+    {
+      "week": 14,
+      "tier": "LOSERS_CONSOLATION_LADDER",
+      "winner": "AWAY",
+      "home": {
+        "teamId": 10,
+        "points": 122.56
+      },
+      "away": {
+        "teamId": 2,
+        "points": 128.12
+      }
+    },
+    {
+      "week": 14,
+      "tier": "LOSERS_CONSOLATION_LADDER",
+      "winner": "AWAY",
+      "home": {
+        "teamId": 11,
+        "points": 131.04
+      },
+      "away": {
+        "teamId": 13,
+        "points": 153.28
+      }
+    },
+    {
+      "week": 14,
+      "tier": "LOSERS_CONSOLATION_LADDER",
+      "winner": "HOME",
+      "home": {
+        "teamId": 4,
+        "points": 78.7
+      },
+      "away": {
+        "teamId": 12,
+        "points": 62
+      }
+    },
+    {
+      "week": 15,
+      "tier": "WINNERS_BRACKET",
+      "winner": "HOME",
+      "home": {
+        "teamId": 6,
+        "points": 147.66
+      },
+      "away": {
+        "teamId": 8,
+        "points": 123.84
+      }
+    },
+    {
+      "week": 15,
+      "tier": "WINNERS_BRACKET",
+      "winner": "HOME",
+      "home": {
+        "teamId": 5,
+        "points": 164
+      },
+      "away": {
+        "teamId": 9,
+        "points": 82.3
+      }
+    },
+    {
+      "week": 15,
+      "tier": "WINNERS_CONSOLATION_LADDER",
+      "winner": "HOME",
+      "home": {
+        "teamId": 7,
+        "points": 139.3
+      },
+      "away": {
+        "teamId": 1,
+        "points": 127.74
+      }
+    },
+    {
+      "week": 15,
+      "tier": "LOSERS_CONSOLATION_LADDER",
+      "winner": "AWAY",
+      "home": {
+        "teamId": 2,
+        "points": 104.48
+      },
+      "away": {
+        "teamId": 13,
+        "points": 153.58
+      }
+    },
+    {
+      "week": 15,
+      "tier": "LOSERS_CONSOLATION_LADDER",
+      "winner": "HOME",
+      "home": {
+        "teamId": 10,
+        "points": 102.64
+      },
+      "away": {
+        "teamId": 4,
+        "points": 95.66
+      }
+    },
+    {
+      "week": 15,
+      "tier": "LOSERS_CONSOLATION_LADDER",
+      "winner": "HOME",
+      "home": {
+        "teamId": 11,
+        "points": 125.54
+      },
+      "away": {
+        "teamId": 12,
+        "points": 60
+      }
+    },
+    {
+      "week": 16,
+      "tier": "WINNERS_BRACKET",
+      "winner": "AWAY",
+      "home": {
+        "teamId": 6,
+        "points": 220.02
+      },
+      "away": {
+        "teamId": 5,
+        "points": 246.5
+      }
+    },
+    {
+      "week": 16,
+      "tier": "WINNERS_CONSOLATION_LADDER",
+      "winner": "HOME",
+      "home": {
+        "teamId": 8,
+        "points": 250.88
+      },
+      "away": {
+        "teamId": 9,
+        "points": 213.26
+      }
+    },
+    {
+      "week": 16,
+      "tier": "WINNERS_CONSOLATION_LADDER",
+      "winner": "AWAY",
+      "home": {
+        "teamId": 7,
+        "points": 245.6
+      },
+      "away": {
+        "teamId": 1,
+        "points": 283.92
+      }
+    },
+    {
+      "week": 16,
+      "tier": "LOSERS_CONSOLATION_LADDER",
+      "winner": "HOME",
+      "home": {
+        "teamId": 10,
+        "points": 325.46
+      },
+      "away": {
+        "teamId": 13,
+        "points": 248.44
+      }
+    },
+    {
+      "week": 16,
+      "tier": "LOSERS_CONSOLATION_LADDER",
+      "winner": "AWAY",
+      "home": {
+        "teamId": 2,
+        "points": 222.7
+      },
+      "away": {
+        "teamId": 11,
+        "points": 247.4
+      }
+    },
+    {
+      "week": 16,
+      "tier": "LOSERS_CONSOLATION_LADDER",
+      "winner": "HOME",
+      "home": {
+        "teamId": 4,
+        "points": 204.4
+      },
+      "away": {
+        "teamId": 12,
+        "points": 157
+      }
+    }
+  ]
+}
